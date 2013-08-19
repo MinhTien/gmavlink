@@ -1,0 +1,192 @@
+<?xml version='1.0'?>
+<mavlink>
+     <include>common.xml</include>
+     <enums>
+          <enum name="RC_CHHANNEL_ENUM">
+               <description>rc channels</description>
+               <entry value="0" name="CH1">
+                    <description>channel 1</description>
+               </entry>
+			   <entry value="1" name="CH2">
+                    <description>channel 2</description>
+               </entry>
+			   <entry value="2" name="CH3">
+                    <description>channel 3</description>
+               </entry>
+			   <entry value="3" name="CH4">
+                    <description>channel 4</description>
+               </entry>
+			   <entry value="4" name="CH5">
+                    <description>channel 5</description>
+               </entry>
+			   <entry value="5" name="CH6">
+                    <description>channel 6</description>
+               </entry>
+			   <entry value="6" name="CH7">
+                    <description>channel 7</description>
+               </entry>
+			   <entry value="7" name="CH8">
+                    <description>channel 8</description>
+               </entry>
+			   <entry value="8" name="CH9">
+                    <description>channel 9</description>
+               </entry>
+			   <entry value="9" name="CH10">
+                    <description>channel 10</description>
+               </entry>
+			   <entry value="10" name="CH11">
+                    <description>channel 11</description>
+               </entry>
+			   <entry value="11" name="CH12">
+                    <description>channel 12</description>
+               </entry>
+			   <entry value="12" name="CH13">
+                    <description>channel 13</description>
+               </entry>
+			   <entry value="13" name="CH14">
+                    <description>channel 14</description>
+               </entry>
+			   <entry value="14" name="CH15">
+                    <description>channel 15</description>
+               </entry>
+			   <entry value="15" name="CH16">
+                    <description>channel 16</description>
+               </entry>
+			   <entry value="16" name="CH17">
+                    <description>channel 17</description>
+               </entry>
+			   <entry value="17" name="CH18">
+                    <description>channel 18</description>
+               </entry>
+          </enum>
+		  
+		  <enum name="GYRO_CALIB_STATUS_ENUM">
+			   <entry value="1" name="GYRO_CALIB_FAIL">
+                    <description>gyro calib fail</description>
+               </entry>
+			   <entry value="2" name="GYRO_CALIB_FINISH">
+                    <description>gyro calib finish</description>
+               </entry>
+		  </enum>
+		  
+		  <enum name="ACC_CALIB_STATUS_ENUM">
+		  	   <entry value="0" name="ACC_CALIB_FINISH">
+                    <description>finish acc calib</description>
+               </entry>
+			   <entry value="1" name="ONE_REMAINING_FACE">
+                    <description>one face not calib yet</description>
+               </entry>
+			   <entry value="2" name="TWO_REMAINING_FACES">
+                    <description>two faces not calib yet</description>
+               </entry>
+			   <entry value="3" name="THREE_REMAINING_FACES">
+                    <description>three faces not calib yet</description>
+               </entry>
+			   <entry value="4" name="FOUR_REMAINING_FACES">
+                    <description>four faces not calib yet</description>
+               </entry>
+			   <entry value="5" name="FIVE_REMAINING_FACES">
+                    <description>five faces not calib yet</description>
+               </entry>
+			   <entry value="6" name="SIX_REMAINING_FACES">
+                    <description>six faces not calib yet</description>
+               </entry>
+			   <entry value="7" name="ACC_CALIB_FAIL">
+                    <description>acc calib fail</description>
+               </entry>
+		  </enum>
+		  
+		  <enum name="ACC_CALIB_MODE">
+				<entry value="0" name="ONE_FACE">
+					<description>acc one face calib mode</description>
+				</entry>
+				<entry value="1" name="SIX_FACES">
+					<description>acc six faces calib mode</description>
+				</entry>
+		  </enum>	  
+		  
+     </enums>  
+	 <!-- MESSAGE IDs 150 - 240: Space for custom messages in individual projectname_messages.xml files -->
+     <messages>
+	 		  
+		  <message id="151" name="PPM_CHAN_VALUES">
+               <description>send PPM values of TILT, PAN, ROLL, MODE channels</description>
+               <field type="float" name="tilt">ppm tilt value</field>	 
+			   <field type="float" name="pan">ppm pan value</field>	
+			   <field type="float" name="roll">ppm roll value</field>	 
+			   <field type="float" name="mode">ppm mode value</field>	  			   
+          </message>
+	 
+          <message id="152" name="SBUS_CHAN_VALUES">
+               <description>send 16 channels values of sbus futaba</description>
+               <field type="int16_t" name="ch1">channel1 value</field>
+               <field type="int16_t" name="ch2">channel2 value</field>
+               <field type="int16_t" name="ch3">channel3 value</field>
+			   <field type="int16_t" name="ch4">channel4 value</field>	
+			   <field type="int16_t" name="ch5">channel5 value</field>		   
+			   <field type="int16_t" name="ch6">channel6 value</field>		   
+			   <field type="int16_t" name="ch7">channel7 value</field>		   
+			   <field type="int16_t" name="ch8">channel8 value</field>		   
+			   <field type="int16_t" name="ch9">channel9 value</field>		   
+			   <field type="int16_t" name="ch10">channel10 value</field>		   
+			   <field type="int16_t" name="ch11">channel11 value</field>		   
+			   <field type="int16_t" name="ch12">channel12 value</field>		   
+			   <field type="int16_t" name="ch13">channel13 value</field>		   
+			   <field type="int16_t" name="ch14">channel14 value</field>		   
+			   <field type="int16_t" name="ch15">channel15 value</field>		   
+			   <field type="int16_t" name="ch16">channel16 value</field>	
+			   <field type="int16_t" name="ch17">channel17 value</field>
+			   <field type="int16_t" name="ch18">channel18 value</field>			   
+   			   
+          </message>
+		  
+		  <message id="153" name="TILT_SIMULATION">
+               <description>simulate rc tilt channels</description>
+               <field type="int16_t" name="tilt">tilt value in degree</field>	 	   			   
+          </message>
+		  
+		  <message id="154" name="ROLL_SIMULATION">
+               <description>simulate rc roll channels</description>
+               <field type="int16_t" name="roll">roll value in degree</field>	  			   
+          </message>
+		  
+		  <message id="155" name="PAN_SIMULATION">
+               <description>simulate rc pan channels</description>
+               <field type="int16_t" name="pan">pan value in degree</field>		 			   
+          </message>
+		  
+		  <message id="156" name="GYRO_CALIB_REQUEST">
+               <description>send calib gyro request</description>  		
+			   <field type="uint8_t" name="gyro_calib_mode">gyro calib mode</field>
+          </message>
+		  
+		  <message id="157" name="GYRO_CALIB_STATUS">
+               <description>send calib gyro status</description>  		
+			   <field type="uint8_t" name="status">gyro calib status</field>
+          </message>
+		  
+		  <message id="158" name="ACC_CALIB_REQUEST">
+               <description>send calib acc request</description>  		
+			   <field type="uint8_t" name="acc_calib_mode">acc calib mode "one face" or "six faces"</field>
+          </message>
+		  
+		  <message id="159" name="ACC_CALIB_STATUS">
+               <description>send calib acc status</description>  		
+			   <field type="uint8_t" name="acc_calib_status">acc calib status</field>
+          </message>	  		  
+		  		  				  
+     </messages>
+</mavlink>
+
+
+
+
+
+
+
+
+
+
+
+
+
