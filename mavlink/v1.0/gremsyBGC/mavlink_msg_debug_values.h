@@ -50,7 +50,7 @@ typedef struct __mavlink_debug_values_t
  * @param debug8 debug value 8
  * @return length of the message in bytes (excluding serial stream start sign)
  */
-static inline uint16_t mavlink_msg_debug_values_pack(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg,
+static __inline uint16_t mavlink_msg_debug_values_pack(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg,
 						       float debug1, float debug2, float debug3, float debug4, uint16_t debug5, uint16_t debug6, uint16_t debug7, uint16_t debug8)
 {
 #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
@@ -99,7 +99,7 @@ static inline uint16_t mavlink_msg_debug_values_pack(uint8_t system_id, uint8_t 
  * @param debug8 debug value 8
  * @return length of the message in bytes (excluding serial stream start sign)
  */
-static inline uint16_t mavlink_msg_debug_values_pack_chan(uint8_t system_id, uint8_t component_id, uint8_t chan,
+static __inline uint16_t mavlink_msg_debug_values_pack_chan(uint8_t system_id, uint8_t component_id, uint8_t chan,
 							   mavlink_message_t* msg,
 						           float debug1,float debug2,float debug3,float debug4,uint16_t debug5,uint16_t debug6,uint16_t debug7,uint16_t debug8)
 {
@@ -141,7 +141,7 @@ static inline uint16_t mavlink_msg_debug_values_pack_chan(uint8_t system_id, uin
  * @param msg The MAVLink message to compress the data into
  * @param debug_values C-struct to read the message contents from
  */
-static inline uint16_t mavlink_msg_debug_values_encode(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg, const mavlink_debug_values_t* debug_values)
+static __inline uint16_t mavlink_msg_debug_values_encode(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg, const mavlink_debug_values_t* debug_values)
 {
 	return mavlink_msg_debug_values_pack(system_id, component_id, msg, debug_values->debug1, debug_values->debug2, debug_values->debug3, debug_values->debug4, debug_values->debug5, debug_values->debug6, debug_values->debug7, debug_values->debug8);
 }
@@ -161,7 +161,7 @@ static inline uint16_t mavlink_msg_debug_values_encode(uint8_t system_id, uint8_
  */
 #ifdef MAVLINK_USE_CONVENIENCE_FUNCTIONS
 
-static inline void mavlink_msg_debug_values_send(mavlink_channel_t chan, float debug1, float debug2, float debug3, float debug4, uint16_t debug5, uint16_t debug6, uint16_t debug7, uint16_t debug8)
+static __inline void mavlink_msg_debug_values_send(mavlink_channel_t chan, float debug1, float debug2, float debug3, float debug4, uint16_t debug5, uint16_t debug6, uint16_t debug7, uint16_t debug8)
 {
 #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
 	char buf[24];
@@ -200,7 +200,7 @@ static inline void mavlink_msg_debug_values_send(mavlink_channel_t chan, float d
  *
  * @return debug value 1
  */
-static inline float mavlink_msg_debug_values_get_debug1(const mavlink_message_t* msg)
+static __inline float mavlink_msg_debug_values_get_debug1(const mavlink_message_t* msg)
 {
 	return _MAV_RETURN_float(msg,  0);
 }
@@ -210,7 +210,7 @@ static inline float mavlink_msg_debug_values_get_debug1(const mavlink_message_t*
  *
  * @return debug value 2
  */
-static inline float mavlink_msg_debug_values_get_debug2(const mavlink_message_t* msg)
+static __inline float mavlink_msg_debug_values_get_debug2(const mavlink_message_t* msg)
 {
 	return _MAV_RETURN_float(msg,  4);
 }
@@ -220,7 +220,7 @@ static inline float mavlink_msg_debug_values_get_debug2(const mavlink_message_t*
  *
  * @return debug value 3
  */
-static inline float mavlink_msg_debug_values_get_debug3(const mavlink_message_t* msg)
+static __inline float mavlink_msg_debug_values_get_debug3(const mavlink_message_t* msg)
 {
 	return _MAV_RETURN_float(msg,  8);
 }
@@ -230,7 +230,7 @@ static inline float mavlink_msg_debug_values_get_debug3(const mavlink_message_t*
  *
  * @return debug value 4
  */
-static inline float mavlink_msg_debug_values_get_debug4(const mavlink_message_t* msg)
+static __inline float mavlink_msg_debug_values_get_debug4(const mavlink_message_t* msg)
 {
 	return _MAV_RETURN_float(msg,  12);
 }
@@ -240,7 +240,7 @@ static inline float mavlink_msg_debug_values_get_debug4(const mavlink_message_t*
  *
  * @return debug value 5
  */
-static inline uint16_t mavlink_msg_debug_values_get_debug5(const mavlink_message_t* msg)
+static __inline uint16_t mavlink_msg_debug_values_get_debug5(const mavlink_message_t* msg)
 {
 	return _MAV_RETURN_uint16_t(msg,  16);
 }
@@ -250,7 +250,7 @@ static inline uint16_t mavlink_msg_debug_values_get_debug5(const mavlink_message
  *
  * @return debug value 6
  */
-static inline uint16_t mavlink_msg_debug_values_get_debug6(const mavlink_message_t* msg)
+static __inline uint16_t mavlink_msg_debug_values_get_debug6(const mavlink_message_t* msg)
 {
 	return _MAV_RETURN_uint16_t(msg,  18);
 }
@@ -260,7 +260,7 @@ static inline uint16_t mavlink_msg_debug_values_get_debug6(const mavlink_message
  *
  * @return debug value 7
  */
-static inline uint16_t mavlink_msg_debug_values_get_debug7(const mavlink_message_t* msg)
+static __inline uint16_t mavlink_msg_debug_values_get_debug7(const mavlink_message_t* msg)
 {
 	return _MAV_RETURN_uint16_t(msg,  20);
 }
@@ -270,7 +270,7 @@ static inline uint16_t mavlink_msg_debug_values_get_debug7(const mavlink_message
  *
  * @return debug value 8
  */
-static inline uint16_t mavlink_msg_debug_values_get_debug8(const mavlink_message_t* msg)
+static __inline uint16_t mavlink_msg_debug_values_get_debug8(const mavlink_message_t* msg)
 {
 	return _MAV_RETURN_uint16_t(msg,  22);
 }
@@ -281,7 +281,7 @@ static inline uint16_t mavlink_msg_debug_values_get_debug8(const mavlink_message
  * @param msg The message to decode
  * @param debug_values C-struct to decode the message contents into
  */
-static inline void mavlink_msg_debug_values_decode(const mavlink_message_t* msg, mavlink_debug_values_t* debug_values)
+static __inline void mavlink_msg_debug_values_decode(const mavlink_message_t* msg, mavlink_debug_values_t* debug_values)
 {
 #if MAVLINK_NEED_BYTE_SWAP
 	debug_values->debug1 = mavlink_msg_debug_values_get_debug1(msg);
