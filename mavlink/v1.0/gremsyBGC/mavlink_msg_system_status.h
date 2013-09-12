@@ -41,7 +41,7 @@ typedef struct __mavlink_system_status_t
  * @param status2 debug value 5
  * @return length of the message in bytes (excluding serial stream start sign)
  */
-static inline uint16_t mavlink_msg_system_status_pack(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg,
+static __inline uint16_t mavlink_msg_system_status_pack(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg,
 						       float battery_voltage, uint8_t imu_calib, uint8_t sat_numbers, uint8_t status1, uint8_t status2)
 {
 #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
@@ -81,7 +81,7 @@ static inline uint16_t mavlink_msg_system_status_pack(uint8_t system_id, uint8_t
  * @param status2 debug value 5
  * @return length of the message in bytes (excluding serial stream start sign)
  */
-static inline uint16_t mavlink_msg_system_status_pack_chan(uint8_t system_id, uint8_t component_id, uint8_t chan,
+static __inline uint16_t mavlink_msg_system_status_pack_chan(uint8_t system_id, uint8_t component_id, uint8_t chan,
 							   mavlink_message_t* msg,
 						           float battery_voltage,uint8_t imu_calib,uint8_t sat_numbers,uint8_t status1,uint8_t status2)
 {
@@ -117,7 +117,7 @@ static inline uint16_t mavlink_msg_system_status_pack_chan(uint8_t system_id, ui
  * @param msg The MAVLink message to compress the data into
  * @param system_status C-struct to read the message contents from
  */
-static inline uint16_t mavlink_msg_system_status_encode(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg, const mavlink_system_status_t* system_status)
+static __inline uint16_t mavlink_msg_system_status_encode(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg, const mavlink_system_status_t* system_status)
 {
 	return mavlink_msg_system_status_pack(system_id, component_id, msg, system_status->battery_voltage, system_status->imu_calib, system_status->sat_numbers, system_status->status1, system_status->status2);
 }
@@ -134,7 +134,7 @@ static inline uint16_t mavlink_msg_system_status_encode(uint8_t system_id, uint8
  */
 #ifdef MAVLINK_USE_CONVENIENCE_FUNCTIONS
 
-static inline void mavlink_msg_system_status_send(mavlink_channel_t chan, float battery_voltage, uint8_t imu_calib, uint8_t sat_numbers, uint8_t status1, uint8_t status2)
+static __inline void mavlink_msg_system_status_send(mavlink_channel_t chan, float battery_voltage, uint8_t imu_calib, uint8_t sat_numbers, uint8_t status1, uint8_t status2)
 {
 #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
 	char buf[8];
@@ -167,7 +167,7 @@ static inline void mavlink_msg_system_status_send(mavlink_channel_t chan, float 
  *
  * @return debug value 1
  */
-static inline float mavlink_msg_system_status_get_battery_voltage(const mavlink_message_t* msg)
+static __inline float mavlink_msg_system_status_get_battery_voltage(const mavlink_message_t* msg)
 {
 	return _MAV_RETURN_float(msg,  0);
 }
@@ -177,7 +177,7 @@ static inline float mavlink_msg_system_status_get_battery_voltage(const mavlink_
  *
  * @return debug value 2
  */
-static inline uint8_t mavlink_msg_system_status_get_imu_calib(const mavlink_message_t* msg)
+static __inline uint8_t mavlink_msg_system_status_get_imu_calib(const mavlink_message_t* msg)
 {
 	return _MAV_RETURN_uint8_t(msg,  4);
 }
@@ -187,7 +187,7 @@ static inline uint8_t mavlink_msg_system_status_get_imu_calib(const mavlink_mess
  *
  * @return debug value 3
  */
-static inline uint8_t mavlink_msg_system_status_get_sat_numbers(const mavlink_message_t* msg)
+static __inline uint8_t mavlink_msg_system_status_get_sat_numbers(const mavlink_message_t* msg)
 {
 	return _MAV_RETURN_uint8_t(msg,  5);
 }
@@ -197,7 +197,7 @@ static inline uint8_t mavlink_msg_system_status_get_sat_numbers(const mavlink_me
  *
  * @return debug value 4
  */
-static inline uint8_t mavlink_msg_system_status_get_status1(const mavlink_message_t* msg)
+static __inline uint8_t mavlink_msg_system_status_get_status1(const mavlink_message_t* msg)
 {
 	return _MAV_RETURN_uint8_t(msg,  6);
 }
@@ -207,7 +207,7 @@ static inline uint8_t mavlink_msg_system_status_get_status1(const mavlink_messag
  *
  * @return debug value 5
  */
-static inline uint8_t mavlink_msg_system_status_get_status2(const mavlink_message_t* msg)
+static __inline uint8_t mavlink_msg_system_status_get_status2(const mavlink_message_t* msg)
 {
 	return _MAV_RETURN_uint8_t(msg,  7);
 }
@@ -218,7 +218,7 @@ static inline uint8_t mavlink_msg_system_status_get_status2(const mavlink_messag
  * @param msg The message to decode
  * @param system_status C-struct to decode the message contents into
  */
-static inline void mavlink_msg_system_status_decode(const mavlink_message_t* msg, mavlink_system_status_t* system_status)
+static __inline void mavlink_msg_system_status_decode(const mavlink_message_t* msg, mavlink_system_status_t* system_status)
 {
 #if MAVLINK_NEED_BYTE_SWAP
 	system_status->battery_voltage = mavlink_msg_system_status_get_battery_voltage(msg);
