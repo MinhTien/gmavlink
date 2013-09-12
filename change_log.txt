@@ -1,0 +1,4 @@
+-----------------Release date: 12/09/2013-------------------------
+
+	+ Remove message "IMU_CALIB_STATUS"
+	+ Add new message "SYSTEM_STATUS"
