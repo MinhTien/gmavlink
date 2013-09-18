@@ -4,11 +4,11 @@
 
 typedef struct __mavlink_system_status_t
 {
- float battery_voltage; ///< debug value 1
- uint8_t imu_calib; ///< debug value 2
- uint8_t sat_numbers; ///< debug value 3
- uint8_t status1; ///< debug value 4
- uint8_t status2; ///< debug value 5
+ float battery_voltage; ///< current battery voltage
+ uint8_t imu_calib; ///< imu calib status
+ uint8_t sat_numbers; ///< number of sattelites if use GPS
+ uint8_t status1; ///< additional status 1
+ uint8_t status2; ///< additional status 2
 } mavlink_system_status_t;
 
 #define MAVLINK_MSG_ID_SYSTEM_STATUS_LEN 8
@@ -34,11 +34,11 @@ typedef struct __mavlink_system_status_t
  * @param component_id ID of this component (e.g. 200 for IMU)
  * @param msg The MAVLink message to compress the data into
  *
- * @param battery_voltage debug value 1
- * @param imu_calib debug value 2
- * @param sat_numbers debug value 3
- * @param status1 debug value 4
- * @param status2 debug value 5
+ * @param battery_voltage current battery voltage
+ * @param imu_calib imu calib status
+ * @param sat_numbers number of sattelites if use GPS
+ * @param status1 additional status 1
+ * @param status2 additional status 2
  * @return length of the message in bytes (excluding serial stream start sign)
  */
 static inline uint16_t mavlink_msg_system_status_pack(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg,
@@ -74,11 +74,11 @@ static inline uint16_t mavlink_msg_system_status_pack(uint8_t system_id, uint8_t
  * @param component_id ID of this component (e.g. 200 for IMU)
  * @param chan The MAVLink channel this message was sent over
  * @param msg The MAVLink message to compress the data into
- * @param battery_voltage debug value 1
- * @param imu_calib debug value 2
- * @param sat_numbers debug value 3
- * @param status1 debug value 4
- * @param status2 debug value 5
+ * @param battery_voltage current battery voltage
+ * @param imu_calib imu calib status
+ * @param sat_numbers number of sattelites if use GPS
+ * @param status1 additional status 1
+ * @param status2 additional status 2
  * @return length of the message in bytes (excluding serial stream start sign)
  */
 static inline uint16_t mavlink_msg_system_status_pack_chan(uint8_t system_id, uint8_t component_id, uint8_t chan,
@@ -126,11 +126,11 @@ static inline uint16_t mavlink_msg_system_status_encode(uint8_t system_id, uint8
  * @brief Send a system_status message
  * @param chan MAVLink channel to send the message
  *
- * @param battery_voltage debug value 1
- * @param imu_calib debug value 2
- * @param sat_numbers debug value 3
- * @param status1 debug value 4
- * @param status2 debug value 5
+ * @param battery_voltage current battery voltage
+ * @param imu_calib imu calib status
+ * @param sat_numbers number of sattelites if use GPS
+ * @param status1 additional status 1
+ * @param status2 additional status 2
  */
 #ifdef MAVLINK_USE_CONVENIENCE_FUNCTIONS
 
@@ -165,7 +165,7 @@ static inline void mavlink_msg_system_status_send(mavlink_channel_t chan, float 
 /**
  * @brief Get field battery_voltage from system_status message
  *
- * @return debug value 1
+ * @return current battery voltage
  */
 static inline float mavlink_msg_system_status_get_battery_voltage(const mavlink_message_t* msg)
 {
@@ -175,7 +175,7 @@ static inline float mavlink_msg_system_status_get_battery_voltage(const mavlink_
 /**
  * @brief Get field imu_calib from system_status message
  *
- * @return debug value 2
+ * @return imu calib status
  */
 static inline uint8_t mavlink_msg_system_status_get_imu_calib(const mavlink_message_t* msg)
 {
@@ -185,7 +185,7 @@ static inline uint8_t mavlink_msg_system_status_get_imu_calib(const mavlink_mess
 /**
  * @brief Get field sat_numbers from system_status message
  *
- * @return debug value 3
+ * @return number of sattelites if use GPS
  */
 static inline uint8_t mavlink_msg_system_status_get_sat_numbers(const mavlink_message_t* msg)
 {
@@ -195,7 +195,7 @@ static inline uint8_t mavlink_msg_system_status_get_sat_numbers(const mavlink_me
 /**
  * @brief Get field status1 from system_status message
  *
- * @return debug value 4
+ * @return additional status 1
  */
 static inline uint8_t mavlink_msg_system_status_get_status1(const mavlink_message_t* msg)
 {
@@ -205,7 +205,7 @@ static inline uint8_t mavlink_msg_system_status_get_status1(const mavlink_messag
 /**
  * @brief Get field status2 from system_status message
  *
- * @return debug value 5
+ * @return additional status 2
  */
 static inline uint8_t mavlink_msg_system_status_get_status2(const mavlink_message_t* msg)
 {
