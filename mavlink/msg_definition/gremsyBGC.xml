@@ -2,7 +2,7 @@
 <mavlink>
      <include>common.xml</include>
      <enums>
-          <enum name="RC_CHHANNEL_ENUM">
+          <enum name="SBUS_CHANNEL_ENUM">
                <description>rc channels</description>
                <entry value="0" name="CH1">
                     <description>channel 1</description>
@@ -58,19 +58,10 @@
 			   <entry value="17" name="CH18">
                     <description>channel 18</description>
                </entry>
-          </enum>
+          </enum>		
 		  
-		  <enum name="GYRO_CALIB_STATUS_ENUM">
-			   <entry value="1" name="GYRO_CALIB_FAIL">
-                    <description>gyro calib fail</description>
-               </entry>
-			   <entry value="2" name="GYRO_CALIB_FINISH">
-                    <description>gyro calib finish</description>
-               </entry>
-		  </enum>
-		  
-		  <enum name="ACC_CALIB_STATUS_ENUM">
-		  	   <entry value="0" name="ACC_CALIB_FINISH">
+		  <enum name="CALIB_STATUS_ENUM">
+		  	   <entry value="0" name="CALIB_FINISH">
                     <description>finish acc calib</description>
                </entry>
 			   <entry value="1" name="ONE_REMAINING_FACE">
@@ -91,10 +82,22 @@
 			   <entry value="6" name="SIX_REMAINING_FACES">
                     <description>six faces not calib yet</description>
                </entry>
-			   <entry value="7" name="ACC_CALIB_FAIL">
+			   <entry value="7" name="CALIB_FAIL">
                     <description>acc calib fail</description>
                </entry>
 		  </enum>
+		  
+		  <enum name="IMU_CALIB_TYPES">
+				<entry value="0" name="ACC_CALIB">
+					<description>acc calib type</description>
+				</entry>
+				<entry value="1" name="GYRO_CALIB">
+					<description>gyro calib type</description>
+				</entry>
+				<entry value="2" name="CALIB_NONE">
+					<description>imu not calib</description>
+				</entry>
+		  </enum>	
 		  
 		  <enum name="ACC_CALIB_MODE">
 				<entry value="0" name="ONE_FACE">
@@ -140,41 +143,40 @@
    			   
           </message>
 		  
-		  <message id="153" name="TILT_SIMULATION">
-               <description>simulate rc tilt channels</description>
-               <field type="int16_t" name="tilt">tilt value in degree</field>	 	   			   
+		  <message id="153" name="RC_SIMULATION">
+               <description>simulate rc channels</description>
+               <field type="int16_t" name="tilt">tilt value in degree</field>
+			   <field type="int16_t" name="roll">roll value in degree</field>	
+			   <field type="int16_t" name="pan">pan value in degree</field>	  	 	   			   
           </message>
 		  
-		  <message id="154" name="ROLL_SIMULATION">
-               <description>simulate rc roll channels</description>
-               <field type="int16_t" name="roll">roll value in degree</field>	  			   
+		  <message id="154" name="IMU_CALIB_REQUEST">
+               <description>send calib imu request</description>  		
+			   <field type="uint8_t" name="calib_type">imu calib type Gyro or Accelerometer</field>
+			   <field type="uint8_t" name="acc_calib_mode">this argument is optional, only used when calib type is ACC</field>
+          </message>		 
+
+  		  <message id="155" name="SYSTEM_STATUS">
+               <description>send debug values</description>  		
+			   <field type="float" name="battery_voltage">current battery voltage</field>
+			   <field type="uint8_t" name="imu_calib">imu calib status</field>
+			   <field type="uint8_t" name="sat_numbers">number of sattelites if use GPS</field>
+			   <field type="uint8_t" name="status1">additional status 1</field>
+			   <field type="uint8_t" name="status2">additional status 2</field>
+          </message>	
+		  
+		  <message id="156" name="DEBUG_VALUES">
+               <description>send debug values</description>  		
+			   <field type="float" name="debug1">debug value 1</field>
+			   <field type="float" name="debug2">debug value 2</field>
+			   <field type="float" name="debug3">debug value 3</field>
+			   <field type="float" name="debug4">debug value 4</field>
+			   <field type="uint16_t" name="debug5">debug value 5</field>
+			   <field type="uint16_t" name="debug6">debug value 6</field>
+			   <field type="uint16_t" name="debug7">debug value 7</field>
+			   <field type="uint16_t" name="debug8">debug value 8</field>
           </message>
 		  
-		  <message id="155" name="PAN_SIMULATION">
-               <description>simulate rc pan channels</description>
-               <field type="int16_t" name="pan">pan value in degree</field>		 			   
-          </message>
-		  
-		  <message id="156" name="GYRO_CALIB_REQUEST">
-               <description>send calib gyro request</description>  		
-			   <field type="uint8_t" name="gyro_calib_mode">gyro calib mode</field>
-          </message>
-		  
-		  <message id="157" name="GYRO_CALIB_STATUS">
-               <description>send calib gyro status</description>  		
-			   <field type="uint8_t" name="status">gyro calib status</field>
-          </message>
-		  
-		  <message id="158" name="ACC_CALIB_REQUEST">
-               <description>send calib acc request</description>  		
-			   <field type="uint8_t" name="acc_calib_mode">acc calib mode "one face" or "six faces"</field>
-          </message>
-		  
-		  <message id="159" name="ACC_CALIB_STATUS">
-               <description>send calib acc status</description>  		
-			   <field type="uint8_t" name="acc_calib_status">acc calib status</field>
-          </message>	  		  
-		  		  				  
      </messages>
 </mavlink>
 
