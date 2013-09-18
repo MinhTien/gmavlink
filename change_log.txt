@@ -1,4 +1,9 @@
+-----------------Release date: 18/09/2013-------------------------	
+	+ Add "CALIB_NONE" member into "IMU_CALIB_TYPE" enumeration
+	+ Fixed issues comments for "SYSTEM_STATUS" message
+
 -----------------Release date: 12/09/2013-------------------------
 
 	+ Remove message "IMU_CALIB_STATUS"
 	+ Add new message "SYSTEM_STATUS"
+	
