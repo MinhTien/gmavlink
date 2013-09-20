@@ -1,3 +1,10 @@
+-----------------Release date: 20/09/2013-------------------------	
+Add four messages:
+	+ "UNIQUE_ID_REQUEST"
+	+ "UNIQUE_ID_VALUES"
+	+ "KEYCODE_REQUEST"
+	+ "KEYCODE_VALUE"
+
 -----------------Release date: 18/09/2013-------------------------	
 	+ Add "CALIB_NONE" member into "IMU_CALIB_TYPE" enumeration
 	+ Fixed issues comments for "SYSTEM_STATUS" message
