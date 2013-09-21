@@ -29,7 +29,7 @@ typedef struct __mavlink_keycode_request_t
  * @param device_name3 name of device can be one of following values
  * @return length of the message in bytes (excluding serial stream start sign)
  */
-static inline uint16_t mavlink_msg_keycode_request_pack(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg,
+static __inline uint16_t mavlink_msg_keycode_request_pack(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg,
 						       uint8_t device_name3)
 {
 #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
@@ -57,7 +57,7 @@ static inline uint16_t mavlink_msg_keycode_request_pack(uint8_t system_id, uint8
  * @param device_name3 name of device can be one of following values
  * @return length of the message in bytes (excluding serial stream start sign)
  */
-static inline uint16_t mavlink_msg_keycode_request_pack_chan(uint8_t system_id, uint8_t component_id, uint8_t chan,
+static __inline uint16_t mavlink_msg_keycode_request_pack_chan(uint8_t system_id, uint8_t component_id, uint8_t chan,
 							   mavlink_message_t* msg,
 						           uint8_t device_name3)
 {
@@ -85,7 +85,7 @@ static inline uint16_t mavlink_msg_keycode_request_pack_chan(uint8_t system_id, 
  * @param msg The MAVLink message to compress the data into
  * @param keycode_request C-struct to read the message contents from
  */
-static inline uint16_t mavlink_msg_keycode_request_encode(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg, const mavlink_keycode_request_t* keycode_request)
+static __inline uint16_t mavlink_msg_keycode_request_encode(uint8_t system_id, uint8_t component_id, mavlink_message_t* msg, const mavlink_keycode_request_t* keycode_request)
 {
 	return mavlink_msg_keycode_request_pack(system_id, component_id, msg, keycode_request->device_name3);
 }
@@ -98,7 +98,7 @@ static inline uint16_t mavlink_msg_keycode_request_encode(uint8_t system_id, uin
  */
 #ifdef MAVLINK_USE_CONVENIENCE_FUNCTIONS
 
-static inline void mavlink_msg_keycode_request_send(mavlink_channel_t chan, uint8_t device_name3)
+static __inline void mavlink_msg_keycode_request_send(mavlink_channel_t chan, uint8_t device_name3)
 {
 #if MAVLINK_NEED_BYTE_SWAP || !MAVLINK_ALIGNED_FIELDS
 	char buf[1];
@@ -123,7 +123,7 @@ static inline void mavlink_msg_keycode_request_send(mavlink_channel_t chan, uint
  *
  * @return name of device can be one of following values
  */
-static inline uint8_t mavlink_msg_keycode_request_get_device_name3(const mavlink_message_t* msg)
+static __inline uint8_t mavlink_msg_keycode_request_get_device_name3(const mavlink_message_t* msg)
 {
 	return _MAV_RETURN_uint8_t(msg,  0);
 }
@@ -134,7 +134,7 @@ static inline uint8_t mavlink_msg_keycode_request_get_device_name3(const mavlink
  * @param msg The message to decode
  * @param keycode_request C-struct to decode the message contents into
  */
-static inline void mavlink_msg_keycode_request_decode(const mavlink_message_t* msg, mavlink_keycode_request_t* keycode_request)
+static __inline void mavlink_msg_keycode_request_decode(const mavlink_message_t* msg, mavlink_keycode_request_t* keycode_request)
 {
 #if MAVLINK_NEED_BYTE_SWAP
 	keycode_request->device_name3 = mavlink_msg_keycode_request_get_device_name3(msg);
