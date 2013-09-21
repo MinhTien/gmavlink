@@ -1,3 +1,8 @@
+-----------------Release date: 21/09/2013-------------------------	
+	+ Add "SYSTEM_ACTIVATION_STATUS" enum
+	+ Add "UNKNOWN" member into "DEVICE_NAME" enum
+	+ Modify "SYSTEM_STATUS" message: change "status1" argument to "system_activated" 
+	
 -----------------Release date: 20/09/2013-------------------------
 	Add four messages for security check:
 	+ "UNIQUE_ID_REQUEST"
