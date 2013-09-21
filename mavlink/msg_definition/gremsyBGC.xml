@@ -108,6 +108,27 @@
 				</entry>
 		  </enum>	  
 		  
+		  <enum name="DEVICE_NAME">
+		  		<entry value="0" name="UNKNOWN">
+					<description>unknown device</description>
+				</entry>
+				<entry value="1" name="GSTABI">
+					<description>gStabi device</description>
+				</entry>
+				<entry value="2" name="GMOTION">
+					<description>gMotion device</description>
+				</entry>
+		  </enum>	
+		  
+		  <enum name="SYSTEM_ACTIVATION_STATUS">
+				<entry value="0" name="NOT_ACTIVATED">
+					<description>system is not activated</description>
+				</entry>
+				<entry value="1" name="ACTIVATED">
+					<description>system is activated</description>
+				</entry>
+		  </enum>	
+		  
      </enums>  
 	 <!-- MESSAGE IDs 150 - 240: Space for custom messages in individual projectname_messages.xml files -->
      <messages>
@@ -161,7 +182,7 @@
 			   <field type="float" name="battery_voltage">current battery voltage</field>
 			   <field type="uint8_t" name="imu_calib">imu calib status</field>
 			   <field type="uint8_t" name="sat_numbers">number of sattelites if use GPS</field>
-			   <field type="uint8_t" name="status1">additional status 1</field>
+			   <field type="uint8_t" name="system_activated">system activation status: 0-not activated, 1-activated</field>
 			   <field type="uint8_t" name="status2">additional status 2</field>
           </message>	
 		  
@@ -177,6 +198,32 @@
 			   <field type="uint16_t" name="debug8">debug value 8</field>
           </message>
 		  
+		  <message id="157" name="UNIQUE_ID_REQUEST">
+               <description>send request message to read unique device id from MCU</description>  		
+			   <field type="uint8_t" name="device_name">name of device: can be one of following values: GSTABI, GMOTION</field>
+          </message>	
+		  
+		  <message id="158" name="UNIQUE_ID_VALUES">
+               <description>send unique device id values of MCU</description>  		
+			   <field type="uint8_t" name="device_name">name of device: can be one of following values: GSTABI, GMOTION</field>
+			   <field type="uint16_t" name="unique_id_0">value of U_ID_15:0 register</field>
+			   <field type="uint16_t" name="unique_id_1">value of U_ID_31:16 register</field>
+			   <field type="uint16_t" name="unique_id_2">value of U_ID_47:32 register</field>
+			   <field type="uint16_t" name="unique_id_3">value of U_ID_63:48 register</field>
+			   <field type="uint16_t" name="unique_id_4">value of U_ID_79:64 register</field>
+			   <field type="uint16_t" name="unique_id_5">value of U_ID_95:80 register</field>
+          </message>
+		  
+		  <message id="159" name="KEYCODE_REQUEST">
+               <description>send request message to get keycode</description>  		
+			   <field type="uint8_t" name="device_name">name of device: can be one of following values: GSTABI, GMOTION</field>
+          </message>
+
+		  <message id="160" name="KEYCODE_VALUE">
+               <description>send request message to get keycode</description>  		
+			   <field type="uint8_t" name="device_name">name of device: can be one of following values: GSTABI, GMOTION</field>
+			   <field type="uint32_t" name="keycode">keycode of device</field>
+          </message>		  		  
      </messages>
 </mavlink>
 
