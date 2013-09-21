@@ -1,3 +1,4 @@
+
 -----------------Release date: 21/09/2013-------------------------	
 	+ Add "SYSTEM_ACTIVATION_STATUS" enum
 	+ Add "UNKNOWN" member into "DEVICE_NAME" enum
