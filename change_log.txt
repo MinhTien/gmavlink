@@ -1,4 +1,7 @@
-
+-----------------Release date: 30/09/2013-------------------------	
+	+ Add "MOTOR_CONTROL" enum
+	+ Add "MOTORS_CONTROL" message
+	
 -----------------Release date: 21/09/2013-------------------------	
 	+ Add "SYSTEM_ACTIVATION_STATUS" enum
 	+ Add "UNKNOWN" member into "DEVICE_NAME" enum
